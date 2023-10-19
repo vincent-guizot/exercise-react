@@ -1,15 +1,11 @@
-const { Item,User } = require("../models");
+const { Item, User } = require("../models");
 
 class ItemController {
   static async getItems(req, res) {
     try {
       let items = await Item.findAll({
-        order: [
-            ['id','ASC']
-        ],
-        include: [
-            User
-        ]
+        order: [["id", "ASC"]],
+        include: [User],
       });
 
       res.status(200).json(items);
